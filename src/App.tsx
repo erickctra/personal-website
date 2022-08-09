@@ -3,8 +3,7 @@ import { Projects } from "./sections/Projects"
 import { Technologies } from "./sections/Technologies"
 import { Experiences } from "./sections/Experiences"
 import { About } from "./sections/About";
-import { Link } from "./components/Link";
-
+import { Contact } from "./sections/Contact";
 
 function App() {
   return (
@@ -14,15 +13,8 @@ function App() {
       <Technologies />
       <Experiences />
       <About />
-
-      <section className="mt-28">
-        <h1>Contact me</h1>
-        <ul className="">
-          <li><Link title="personal.erickcintra@outlook.com"/></li>
-          <li><Link title="LinkedIn"/></li>
-        </ul>
-      </section>
-    </div>
+      <Contact />
+   </div>
   )
 }
 
