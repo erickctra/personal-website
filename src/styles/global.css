@@ -3,17 +3,17 @@
 @tailwind utilities;
 
 body {
-    @apply font-sans
+  @apply font-sans;
 }
 
 h1 {
-    @apply text-title text-base
+  @apply text-title text-base;
 }
 
 h2 {
-    @apply text-description
+  @apply text-description;
 }
 
 h3 {
-    @apply text-subtitle
+  @apply text-subtitle;
 }

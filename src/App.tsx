@@ -1,9 +1,9 @@
-import { Home } from "./sections/Home"
-import { Projects } from "./sections/Projects"
-import { Technologies } from "./sections/Technologies"
-import { Experiences } from "./sections/Experiences"
-import { About } from "./sections/About";
-import { Contact } from "./sections/Contact";
+import { Home } from './sections/Home'
+import { Projects } from './sections/Projects'
+import { Technologies } from './sections/Technologies'
+import { Experiences } from './sections/Experiences'
+import { About } from './sections/About'
+import { Contact } from './sections/Contact'
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       <Experiences />
       <About />
       <Contact />
-   </div>
+    </div>
   )
 }
 
