@@ -1,11 +1,17 @@
-import { Experience } from '../components/Experience'
+import { Experience } from '../components/Experience';
+import { ExperienceResponse } from '../types';
 
-export function Experiences() {
+interface GetExperiencesQueryResponse {
+  data: ExperienceResponse[];
+}
+
+export function Experiences(response: GetExperiencesQueryResponse) {
   return (
     <section className="mt-8">
       <h1>Last experiences:</h1>
-      <Experience title="MusicPlayce" />
-      <Experience title="Instituto Alpha de Medicina" />
+      {response?.data.map((experience) => {
+        return <Experience key={experience.id} {...experience} />;
+      })}
     </section>
-  )
+  );
 }

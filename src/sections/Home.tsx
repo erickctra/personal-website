@@ -1,9 +1,19 @@
-import emojiHand from '../assets/emojis/hand-emoji.png'
-import emojiManPC from '../assets/emojis/man-pc.png'
+import emojiHand from '../assets/emojis/hand-emoji.png';
+import emojiManPC from '../assets/emojis/man-pc.png';
+import { useElementOnScreen } from '../utils';
 
 export function Home() {
+  const objReference = useElementOnScreen({
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.03,
+  });
+
   return (
-    <section className="w-full pt-[260px]">
+    <section
+      className={`w-full pt-[260px] ${objReference.isVisible ? 'fadein' : ''}`}
+      ref={objReference.containerRef}
+    >
       <h1 className="text-2xl">
         <span className="relative">
           Hi!
@@ -31,5 +41,5 @@ export function Home() {
         Developer with professional experience in Flutter, Firebase and React.
       </h2>
     </section>
-  )
+  );
 }

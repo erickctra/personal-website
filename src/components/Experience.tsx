@@ -1,20 +1,30 @@
-import { Link } from './Link'
+import { ExperienceResponse } from '../types';
+import { useElementOnScreen } from '../utils';
+import { Link } from './Link';
 
-interface ExperienceProps {
-  title: string
-}
+export function Experience({
+  companyName,
+  companyWebsite,
+  contribuitionTime,
+  experienceDescription,
+}: ExperienceResponse) {
+  const objReference = useElementOnScreen({
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.04,
+  });
 
-export function Experience(props: ExperienceProps) {
   return (
-    <div className="mt-8">
-      <h3 className="text-xs">2021-2022</h3>
+    <div
+      className={`mt-8 fadeout 
+      ${objReference.isVisible ? 'fadein' : ''}`}
+      ref={objReference.containerRef}
+    >
+      <h3 className="text-xs">{contribuitionTime}</h3>
       <h1 className="mt-2">
-        <Link title={props.title} />
+        <Link title={companyName} url={companyWebsite} />
       </h1>
-      <h2>
-        Fill your project brief here. It can be the outcome of the project, or
-        some success metrics, or a cheesy tagline.
-      </h2>
+      <h2 className="whitespace-pre-line">{experienceDescription}</h2>
     </div>
-  )
+  );
 }

@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+.section {
+  @apply h-screen w-full;
+}
+
+.box {
+  @apply flex justify-center items-center bg-slate-700 text-amber-300 w-[500px] h-[250px];
+}
+
+.isVisible {
+  @apply flex justify-center items-center fixed top-0;
+}
+
+.fadein {
+  @apply opacity-100 transition-all duration-500 translate-x-0 !important;
+}
+
+.fadeout {
+  @apply opacity-0 translate-x-5;
+}
+
 body {
   @apply font-sans;
 }

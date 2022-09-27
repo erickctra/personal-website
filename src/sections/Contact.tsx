@@ -1,17 +1,25 @@
-import { Link } from '../components/Link'
+import { Link } from '../components/Link';
+import { SocialResponse } from '../types';
 
-export function Contact() {
+interface GetSocialQueryResponse {
+  data: SocialResponse;
+}
+
+export function Contact(response: GetSocialQueryResponse) {
   return (
     <section className="mt-28">
       <h1>Contact me</h1>
       <ul className="">
         <li>
-          <Link title="personal.erickcintra@outlook.com" />
+          <Link
+            title={response.data.email}
+            url={`mailto:${response.data.email}`}
+          />
         </li>
         <li>
-          <Link title="LinkedIn" />
+          <Link title="LinkedIn" url={response.data.linkedin} />
         </li>
       </ul>
     </section>
-  )
+  );
 }
