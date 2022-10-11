@@ -16,13 +16,34 @@ export function About(response: GetAboutQueryResponse) {
     threshold: 0.04,
   });
 
+  const i18n = {
+    en: {
+      'about': 'About me:',
+
+    },
+    pt_BR: {
+      'about': 'Sobre mim',
+    }
+  }
+
+  const languague = navigator.language;
+  const format = languague.replace(/-/g, "_");
+
+  let lang;
+
+  if (format == 'pt_BR') {
+    lang = i18n.pt_BR;
+  } else {
+    lang = i18n.en;
+  }
+
   return (
     <section
       className={`mt-28 fadeout
       ${objReference.isVisible ? 'fadein' : ''}`}
       ref={objReference.containerRef}
     >
-      <h1>About me</h1>
+      <h1>{lang.about}</h1>
 
       {firstResult?.aboutSection.map((section) => {
         return (

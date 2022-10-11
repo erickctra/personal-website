@@ -6,9 +6,31 @@ interface GetSocialQueryResponse {
 }
 
 export function Contact(response: GetSocialQueryResponse) {
+
+  const i18n = {
+    en: {
+      'contact': 'Contact me:',
+
+    },
+    pt_BR: {
+      'contact': 'Contate-me',
+    }
+  }
+
+  const languague = navigator.language;
+  const format = languague.replace(/-/g, "_");
+
+  let lang;
+
+  if (format == 'pt_BR') {
+    lang = i18n.pt_BR;
+  } else {
+    lang = i18n.en;
+  }
+
   return (
     <section className="mt-28">
-      <h1>Contact me</h1>
+      <h1>{lang.contact}</h1>
       <ul className="">
         <li>
           <Link

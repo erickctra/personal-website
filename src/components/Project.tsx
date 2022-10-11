@@ -17,6 +17,26 @@ export function Project({
     threshold: 0.04,
   });
 
+  const i18n = {
+    en: {
+      'try': 'Try it out'
+    },
+    pt_BR: {
+      'try': 'Visualizar'
+    }
+  }
+
+  const languague = navigator.language;
+  const format = languague.replace(/-/g, "_");
+
+  let lang;
+
+  if (format == 'pt_BR') {
+    lang = i18n.pt_BR;
+  } else {
+    lang = i18n.en;
+  }
+
   return (
     <div
       className={`flex flex-col-reverse items-center justify-between mt-8 sm:flex-row fadeout
@@ -27,7 +47,7 @@ export function Project({
         <h3 className="text-xs">{releaseYear} - present</h3>
         <h1 className="mt-2">{name}</h1>
         <h2 className="sm:max-w-[80%] mb-2">{description}</h2>
-        <Link title="Try it out" url={sourceCode} />
+        <Link title={lang.try} url={sourceCode} />
       </div>
       <div
         style={{backgroundColor: bannerColor.hex}}

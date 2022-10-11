@@ -19,42 +19,45 @@ import {
   TechResponse,
 } from './types';
 
+const languague = navigator.language;
+const format = languague.replace(/-/g, "_");
+
 const GET_LANDING_PAGE_QUERY = gql`
-  query LandingPage {
-    projects {
-      id
-      name
-      image
-      releaseYear
-      sourceCode
-      description
-      bannerColor {
-        hex
-      }
-    }
-    techs {
-      id
-      techName
-    }
-    experiences {
-      id
-      companyName
-      companyWebsite
-      contribuitionTime
-      experienceDescription
-    }
-    abouts {
-      id
-      aboutSection
-      attachment
-    }
-    social(where: { id: "ckxj6dmpcgi2t0b05d096vamn" }) {
-      instragram
-      linkedin
-      email
-      resumePdf
+query LandingPage {
+  projects(locales: ${format}) {
+    id
+    name
+    image
+    releaseYear
+    sourceCode
+    description
+    bannerColor {
+      hex
     }
   }
+  techs {
+    id
+    techName
+  }
+  experiences(locales: ${format}) {
+    id
+    companyName
+    companyWebsite
+    contribuitionTime
+    experienceDescription
+  }
+  abouts(locales: ${format}) {
+    id
+    aboutSection
+    attachment
+  }
+  social(where: {id: "ckxj6dmpcgi2t0b05d096vamn"}) {
+    instragram
+    linkedin
+    email
+    resumePdf
+  }
+}
 `;
 
 interface GetLandingPageQueryResponse {
@@ -96,12 +99,6 @@ function App() {
   return (
     <div className="App max-w-2xl m-auto box-border py-14 px-14 sm:px-5">
       <Home />
-      <div className="mt-4">
-        <Link
-          title="My Resume (pdf 109kb)"
-          url={data?.social.resumePdf ?? ''}
-        />
-      </div>
       {data ? (
         <>
           <Projects data={data?.projects} />
